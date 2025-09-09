@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지 - BioOne</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="mypage">
+    <!-- 상단 네비게이션 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html"><img src="images/logo_w.png" alt="바이오원" class="logo-img"></a>
+            </div>
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="keyword-answer.html">검색답변</a></li>
+                    <li><a href="ai-answer.html">AI답변</a></li>
+                    <li><a href="mypage.html">마이페이지</a></li>
+                    <li><a href="https://www.bioone.re.kr/main" target="_blank">바이오원</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 헤더: 배경 이미지 (200px 높이) -->
+    <header class="mypage-header">
+        <div class="header-bg__image"></div>
+        <div class="header-content">
+            <h1>마이페이지</h1>
+            <p>프로젝트와 채팅을 관리하세요</p>
+        </div>
+    </header>
+
+    <!-- 3단 레이아웃 컨테이너 -->
+    <div class="three-column-layout">
+        <!-- 좌측 섹션 - 메뉴 -->
+        <div class="left-column">
+            <div class="menu-container">
+                <div class="menu-header">
+                    <h3>메뉴</h3>
+                </div>
+                
+                <div class="menu-list">
+                    <div class="menu-item active" onclick="selectMenu('projects')">
+                        <div class="menu-content">
+                            <div class="menu-title">내 프로젝트 관리</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" onclick="selectMenu('chats')">
+                        <div class="menu-content">
+                            <div class="menu-title">채팅 관리</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 가운데 섹션 - 메인 콘텐츠 -->
+        <div class="center-column">
+            <div class="mypage-content">
+                <div class="content-header">
+                    <h2>내 프로젝트 관리</h2>
+                </div>
+                
+                <div class="content-body">
+                    <!-- 프로젝트 관리 섹션 -->
+                    <div id="projects-section" class="section-content">
+                        <!-- 프로젝트 검색 창 -->
+                        <div class="project-search-section">
+                            <div class="search-input-wrapper">
+                                <input type="text" id="projectSearchInput" placeholder="프로젝트를 검색하세요." class="search-input">
+                                <button class="search-btn" onclick="searchProjects()">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="11" cy="11" r="8"/>
+                                        <path d="M21 21l-4.35-4.35"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="project-list">
+                            <div class="project-item">
+                                <div class="project-content">
+                                    <div class="project-title">COVID-19 연구 프로젝트</div>
+                                    <div class="project-questions">
+                                        <div class="question-item">• COVID-19 바이러스의 변이체는 어떻게 발생하나요?</div>
+                                        <div class="question-item">• 백신의 효과는 얼마나 지속되나요?</div>
+                                        <div class="question-item">• 집단면역 달성 조건은 무엇인가요?</div>
+                                    </div>
+                                    <div class="project-meta">
+                                        <span class="project-date">2025.09.03 14:30</span>
+                                        <span class="project-count">12개 질문</span>
+                                    </div>
+                                </div>
+                                <div class="project-actions">
+                                    <button class="action-btn edit-btn" onclick="editProject('project1')">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                        </svg>
+                                    </button>
+                                    <button class="action-btn delete-btn" onclick="deleteProject('project1')">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="3,6 5,6 21,6"/>
+                                            <path d="M19,6v14a2,2 0 0,1 -2,2H7a2,2 0 0,1 -2,-2V6m3,0V4a2,2 0 0,1 2,-2h4a2,2 0 0,1 2,2v2"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="project-item">
+                                <div class="project-content">
+                                    <div class="project-title">유전자 편집 기술 연구</div>
+                                    <div class="project-questions">
+                                        <div class="question-item">• CRISPR-Cas9 기술의 정확도는 어떻게 향상시킬 수 있나요?</div>
+                                        <div class="question-item">• 유전자 편집의 부작용은 어떻게 최소화하나요?</div>
+                                    </div>
+                                    <div class="project-meta">
+                                        <span class="project-date">2025.09.01 09:15</span>
+                                        <span class="project-count">8개 질문</span>
+                                    </div>
+                                </div>
+                                <div class="project-actions">
+                                    <button class="action-btn edit-btn" onclick="editProject('project2')">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                        </svg>
+                                    </button>
+                                    <button class="action-btn delete-btn" onclick="deleteProject('project2')">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="3,6 5,6 21,6"/>
+                                            <path d="M19,6v14a2,2 0 0,1 -2,2H7a2,2 0 0,1 -2,-2V6m3,0V4a2,2 0 0,1 2,-2h4a2,2 0 0,1 2,2v2"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="project-item">
+                                <div class="project-content">
+                                    <div class="project-title">바이오 센서 개발</div>
+                                    <div class="project-questions">
+                                        <div class="question-item">• 나노물질 기반 센서의 감도는 어떻게 측정하나요?</div>
+                                        <div class="question-item">• 실시간 생체신호 감지 기술의 한계는 무엇인가요?</div>
+                                        <div class="question-item">• 센서의 수명을 연장하는 방법은 무엇인가요?</div>
+                                    </div>
+                                    <div class="project-meta">
+                                        <span class="project-date">2025.08.28 16:45</span>
+                                        <span class="project-count">15개 질문</span>
+                                    </div>
+                                </div>
+                                <div class="project-actions">
+                                    <button class="action-btn edit-btn" onclick="editProject('project3')">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                        </svg>
+                                    </button>
+                                    <button class="action-btn delete-btn" onclick="deleteProject('project3')">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="3,6 5,6 21,6"/>
+                                            <path d="M19,6v14a2,2 0 0,1 -2,2H7a2,2 0 0,1 -2,-2V6m3,0V4a2,2 0 0,1 2,-2h4a2,2 0 0,1 2,2v2"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 채팅 관리 섹션 -->
+                    <div id="chats-section" class="section-content" style="display: none;">
+                        <!-- 채팅 검색 섹션 -->
+                        <div class="chat-search-section">
+                            <div class="search-input-wrapper">
+                                <input type="text" id="chatSearchInput" class="search-input" placeholder="채팅 목록을 검색하세요.">
+                                <button class="search-btn" onclick="searchChats()">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="11" cy="11" r="8"/>
+                                        <path d="M21 21l-4.35-4.35"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 채팅 목록 -->
+                        <div class="chat-list">
+                            <div class="chat-item">
+                                <div class="chat-header" onclick="toggleChat('chat1')">
+                                    <div class="chat-title">
+                                        COVID-19 연구 관련 질문들
+                                    </div>
+                                    <div class="chat-actions">
+                                        <button class="collapse-btn" id="collapse-chat1">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M18 15l-6-6-6 6"/>
+                                            </svg>
+                                        </button>
+                                        <div class="kebab-menu" onclick="event.stopPropagation(); toggleKebabMenu(this)">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <circle cx="12" cy="12" r="1"/>
+                                                <circle cx="12" cy="5" r="1"/>
+                                                <circle cx="12" cy="19" r="1"/>
+                                            </svg>
+                                            <div class="kebab-dropdown">
+                                                <div class="kebab-item" onclick="editChat('chat1')">편집</div>
+                                                <div class="kebab-item delete" onclick="deleteChat('chat1')">삭제</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chat-content" id="chat-content-1" style="display: none;">
+                                    <div class="question-list">
+                                        <div class="question-item" onclick="toggleAnswer('q1')">
+                                            <div class="question-arrow">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M9 18l6-6-6-6"/>
+                                                </svg>
+                                            </div>
+                                            <div class="question-text">COVID-19 바이러스의 변이체는 어떻게 발생하나요?</div>
+                                            <div class="question-actions">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="question-chat-icon" onclick="openFeedbackModal(event)">
+                                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="answer-content" id="answer-q1" style="display: none;">
+                                            <div class="answer-text">
+                                                COVID-19 바이러스의 변이체는 주로 다음과 같은 과정을 통해 발생합니다:
+                                                <br><br>
+                                                1. <strong>복제 오류</strong>: 바이러스가 세포 내에서 복제될 때 RNA 복제 과정에서 자연스럽게 발생하는 오류
+                                                <br><br>
+                                                2. <strong>선택적 압력</strong>: 면역 체계나 백신에 의한 압력으로 특정 변이가 선택적으로 유지됨
+                                                <br><br>
+                                                3. <strong>재조합</strong>: 서로 다른 바이러스 변이체가 동일한 세포에 감염되어 유전자 재조합이 일어남
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="question-item" onclick="toggleAnswer('q2')">
+                                            <div class="question-arrow">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M9 18l6-6-6-6"/>
+                                                </svg>
+                                            </div>
+                                            <div class="question-text">백신의 효과는 얼마나 지속되나요?</div>
+                                            <div class="question-actions">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="question-chat-icon" onclick="openFeedbackModal(event)">
+                                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="answer-content" id="answer-q2" style="display: none;">
+                                            <div class="answer-text">
+                                                백신의 효과 지속 기간은 백신 종류와 개인차에 따라 다릅니다:
+                                                <br><br>
+                                                • <strong>mRNA 백신</strong>: 6개월 이상 높은 효과 유지
+                                                <br><br>
+                                                • <strong>아데노바이러스 백신</strong>: 4-6개월 효과 지속
+                                                <br><br>
+                                                • <strong>불활화 백신</strong>: 3-6개월 효과 지속
+                                                <br><br>
+                                                정기적인 추가 접종이 권장됩니다.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="chat-item">
+                                <div class="chat-header" onclick="toggleChat('chat2')">
+                                    <div class="chat-title">
+                                        유전자 편집 기술 연구
+                                    </div>
+                                    <div class="chat-actions">
+                                        <button class="collapse-btn" id="collapse-chat2">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M18 15l-6-6-6 6"/>
+                                            </svg>
+                                        </button>
+                                        <div class="kebab-menu" onclick="event.stopPropagation(); toggleKebabMenu(this)">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <circle cx="12" cy="12" r="1"/>
+                                                <circle cx="12" cy="5" r="1"/>
+                                                <circle cx="12" cy="19" r="1"/>
+                                            </svg>
+                                            <div class="kebab-dropdown">
+                                                <div class="kebab-item" onclick="editChat('chat2')">편집</div>
+                                                <div class="kebab-item delete" onclick="deleteChat('chat2')">삭제</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chat-content" id="chat-content-2" style="display: none;">
+                                    <div class="question-list">
+                                        <div class="question-item" onclick="toggleAnswer('q3')">
+                                            <div class="question-text">CRISPR-Cas9 기술의 정확도는 어떻게 향상시킬 수 있나요?</div>
+                                            <div class="question-actions">
+                                                <div class="question-arrow">
+                                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <path d="M9 18l6-6-6-6"/>
+                                                    </svg>
+                                                </div>
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="question-chat-icon" onclick="openFeedbackModal(event)">
+                                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="answer-content" id="answer-q3" style="display: none;">
+                                            <div class="answer-text">
+                                                CRISPR-Cas9 기술의 정확도를 향상시키는 방법들:
+                                                <br><br>
+                                                1. <strong>gRNA 설계 최적화</strong>: 특이성이 높은 gRNA 서열 선택
+                                                <br><br>
+                                                2. <strong>Cas9 변이체 사용</strong>: Nickase나 High-fidelity Cas9 사용
+                                                <br><br>
+                                                3. <strong>조건 최적화</strong>: 온도, pH, 농도 등 실험 조건 조절
+                                                <br><br>
+                                                4. <strong>검증 시스템</strong>: 다중 검증 방법을 통한 오프타겟 효과 확인
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 우측 섹션 - 비어있음 -->
+        <div class="right-column">
+            <!-- 우측 영역은 비워둠 -->
+        </div>
+    </div>
+
+    <!-- 피드백 모달 -->
+    <div class="modal" id="feedbackModal" style="display: none;">
+        <div class="modal-content">
+            <h3>답변에 대한 의견을 남겨주세요</h3>
+            <textarea id="feedbackText" class="dislike-textarea" placeholder="어떤 부분이 부족했는지 알려주세요..." rows="4">COVID-19 백신 효능 분석의 실험 결과는 서울대학교 생명과학부 바이오랩에서 반복 실험 결과 수치가 다르다고 판명되었습니다.</textarea>
+            <div class="modal-actions">
+                <button class="modal-btn confirm-btn" onclick="closeFeedbackModal()">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="mypage.js"></script>
+</body>
+</html>

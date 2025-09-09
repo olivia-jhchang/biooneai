@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioOneAISmartSearch</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="main-page">
+    <!-- 상단 네비게이션 바 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html"><img src="images/logo_w.png" alt="바이오원" class="logo-img"></a>
+            </div>
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="keyword-answer.html">검색답변</a></li>
+                    <li><a href="ai-answer.html">AI답변</a></li>
+                    <li><a href="mypage.html">마이페이지</a></li>
+                    <li><a href="https://www.bioone.re.kr/main" target="_blank">바이오원</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 메인 검색 영역 -->
+    <div class="search-container">
+        <h1 class="main-title">
+            <span class="title-ai">AI</span><span class="title-search">검색 서비스</span>로 더 <span
+                class="title-smart">스마트</span>하게 시작하세요.
+        </h1>
+        <p class="main-subtitle">BioOne AI는 대규모 언어 모델을 사용하여 답변을 생성합니다. 질의에 따라 답변이 정확하지 않을 수 있습니다.</p>
+
+        <!-- 프롬프트 입력창 -->
+        <div class="chat-container">
+            <div class="prompt-input-container">
+                <textarea id="promptInput" class="prompt-input" placeholder="어떤 소재를 찾고 있나요?" rows="1"></textarea>
+                <button class="search-button" onclick="performSearch()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M12 19V5M5 12l7-7 7 7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 통합검색 버튼 (좌측 중앙) -->
+        <div class="left-integrated-search-btn">
+            <a href="index.html" class="integrated-search-button">
+                <div class="integrated-search-content">
+                    <div class="integrated-search-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="m21 21-4.35-4.35"/>
+                        </svg>
+                    </div>
+                    <div class="integrated-search-text">통합검색</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- 메인 페이지 스크립트 -->
+    <script src="script.js"></script>
+    <script>
+        function performSearch() {
+            const promptInput = document.getElementById('promptInput');
+            const query = promptInput.value.trim();
+            if (query) {
+                window.location.href = `ai-answer.html?q=${encodeURIComponent(query)}`;
+            }
+        }
+    </script>
+</body>
+
+</html>

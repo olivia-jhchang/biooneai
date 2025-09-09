@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>키워드 검색 결과1 - BioOne AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="keyword-answer-page">
+    <nav class="navbar">
+        <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="index.html"><img src="images/logo_w.png" alt="바이오원" class="logo-img"></a>
+            </div>
+                <div class="nav-menu">
+                    <ul>
+                    <li><a href="keyword-answer1.html">검색답변</a></li>
+                    <li><a href="ai-answer.html">AI답변</a></li>
+                    <li><a href="mypage.html">마이페이지</a></li>
+                    <li><a href="https://www.bioone.re.kr/main" target="_blank">바이오원</a></li>
+                    </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 헤더: 배경 이미지 + 키워드 입력창 -->
+    <header class="header-bg">
+        <div class="header-bg__image"></div>
+        
+        <!-- AI 검색 고정 버튼 (헤더 우측) -->
+        <div class="header-fixed-ai-search-btn">
+            <a href="ai-index.html" class="ai-search-button">
+                <div class="ai-search-content">
+                    <div class="ai-search-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="m21 21-4.35-4.35"/>
+                        </svg>
+                    </div>
+                    <div class="ai-search-text">AI검색</div>
+                </div>
+            </a>
+        </div>
+    </header>
+    
+    <!-- 메인 탭 네비게이션 (키워드 검색 결과 / 연관자료 보기) -->
+    <div class="tab-navigation">
+        <div class="tab-item active" id="relatedDataTab" onclick="switchMainTab('relatedData')">
+            <div class="tab-icon">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="m21 21-4.35-4.35"/>
+                </svg>
+            </div>
+            <div class="tab-text">통합검색결과</div>
+        </div>
+        <div class="tab-item" id="keywordResultTab" onclick="switchMainTab('keywordResult')">
+            <div class="tab-icon">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                </svg>
+            </div>
+            <div class="tab-text">연관자료보기</div>
+        </div>
+    </div>
+
+    <!-- 3단 레이아웃 컨테이너 -->
+    <div class="three-column-layout">
+        <!-- 좌측 섹션 - 필터 영역 -->
+        <div class="left-column">
+            <!-- 검색 필터 -->
+            <div class="search-filter-container">
+                <div class="filter-header">
+                    <h3>Filter</h3>
+                    <div class="filter-clear-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+                            <path d="M21 3v5h-5"/>
+                            <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+                            <path d="M3 21v-5h5"/>
+                        </svg>
+                        <span>선택 해제</span>
+                    </div>
+                </div>
+                
+                <!-- 분류 필터 -->
+                <div class="filter-section">
+                    <div class="filter-options">
+                        <div class="filter-option">국내소재</div>
+                        <div class="filter-option">신약정보</div>
+                        <div class="filter-option">논문</div>
+                        <div class="filter-option">특허</div>
+                        <div class="filter-option">데이터</div>
+                        <div class="filter-option">통합플랫폼 콘텐츠</div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- 하단 버튼들 -->
+            <div class="action-button">
+                <span>자원목록 검색 이동</span>
+            </div>
+            <div class="action-button">
+                <span>KOBIS 검색 이동</span>
+            </div>
+            <div class="action-button">
+                <span>구조식 검색 이동</span>
+            </div>
+        </div>
+        
+        <!-- 가운데 섹션 -->
+        <div class="center-column">
+            <!-- 관련자료 섹션 (통합검색결과 탭) -->
+            <div class="related-data-section" id="relatedDataSection" style="display: block;">
+                <div class="search-result-header">
+                    <div class="search-result-info">
+                        <div class="search-keyword">
+                            <select class="keyword-select" id="keywordSelect">
+                                <option value="COVID-19">COVID-19</option>
+                                <option value="CRISPR-Cas13">CRISPR-Cas13</option>
+                                <option value="RNA">RNA</option>
+                                <option value="SARS-CoV-2">SARS-CoV-2</option>
+                                <option value="유전자편집">유전자편집</option>
+                                <option value="바이러스">바이러스</option>
+                                <option value="진단">진단</option>
+                                <option value="치료">치료</option>
+                            </select>
+                        </div>
+                    </div>
+                    <span class="search-count-text">답변 관련 자료 검색결과</span>
+                    <span class="search-count-number" id="searchCountNumber">15,456</span>
+                    <span class="search-count-text">건</span>
+                </div>
+                
+                <!-- 안내 문구 -->
+                <div class="search-notice">
+                    국내 소재검색결과는 합성화합물, 배양세포, 천연물, 미생물, 모델동물, 종자(농진청), 축산, 해양생물, 뇌, 병원체, 인체유래물, 줄기세포 클러스터의 소재 정보를 대상으로 하고 있습니다.<br>
+                    향후 지속적으로 연계 클러스터를 확대할 예정입니다.
+                </div>
+                
+                <!-- 통합검색결과 카테고리 탭 -->
+                <div class="category-tabs">
+                    <div class="category-tab-group">
+                        <!-- 카테고리 탭이 동적으로 로드됩니다 -->
+                    </div>
+                </div>
+                
+                <!-- 소재 필터 -->
+                <div class="material-filter">
+                    <div class="filter-title">국내소재 (5)</div>
+                    <div class="more-button">
+                        <span>더보기</span>
+                        <svg width="10" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- 소재 필터 버튼 -->
+                <div class="filter-buttons">
+                    <div class="filter-button active">전체 (8)</div>
+                    <div class="filter-button">배양세포 (3)</div>
+                </div>
+                
+                <div class="material-list" id="materialList">
+                    <!-- 통합검색결과가 동적으로 로드됩니다 -->
+                </div>
+            </div>
+            <!-- 연관 자료 보기 탭 -->
+            <div class="keyword-search-results" id="keywordSearchResults" style="display: none;">
+                <div class="search-result-header">
+                    <div class="search-result-info">
+                        <div class="search-keyword">
+                            <span class="keyword-text" id="displayKeyword">COVID-19</span>
+                        </div>
+                    </div>
+                    <span class="search-count-text">검색 결과</span>
+                    <span class="search-count-number" id="searchCountNumber">0</span>
+                    <span class="search-count-text">건</span>
+                </div>
+                
+                
+                <!-- 연관 자료 검색 결과 목록 -->
+                <div class="search-results-list">
+                    <div class="search-result-item">
+                        <div class="result-title">COVID-19 바이러스의 유전자 구조와 변이 분석</div>
+                        <div class="result-meta">
+                            <span class="result-type">논문</span>
+                            <span class="result-date">2024.03.15</span>
+                            <span class="result-author">김바이오 외 3명</span>
+                        </div>
+                        <div class="result-abstract">
+                            SARS-CoV-2 바이러스의 유전자 구조를 분석하고, 주요 변이체들의 특성을 조사한 연구입니다. 
+                            특히 스파이크 단백질의 변이와 전염성, 병원성의 상관관계를 밝혀냈습니다.
+                        </div>
+                        <div class="result-keywords">
+                            <span class="keyword-tag">COVID-19</span>
+                            <span class="keyword-tag">SARS-CoV-2</span>
+                            <span class="keyword-tag">유전자 변이</span>
+                            <span class="keyword-tag">스파이크 단백질</span>
+                        </div>
+                    </div>
+                    
+                    <div class="search-result-item">
+                        <div class="result-title">COVID-19 진단을 위한 CRISPR 기반 검사법 개발</div>
+                        <div class="result-meta">
+                            <span class="result-type">특허</span>
+                            <span class="result-date">2024.02.28</span>
+                            <span class="result-author">이생명공학</span>
+                        </div>
+                        <div class="result-abstract">
+                            CRISPR-Cas13 기술을 활용한 COVID-19 진단키트 개발에 관한 특허입니다. 
+                            기존 PCR 검사보다 빠르고 정확한 진단이 가능한 새로운 방법을 제시했습니다.
+                        </div>
+                        <div class="result-keywords">
+                            <span class="keyword-tag">COVID-19</span>
+                            <span class="keyword-tag">CRISPR</span>
+                            <span class="keyword-tag">진단</span>
+                            <span class="keyword-tag">Cas13</span>
+                        </div>
+                    </div>
+                    
+                    <div class="search-result-item">
+                        <div class="result-title">COVID-19 백신 개발을 위한 mRNA 기술 연구</div>
+                        <div class="result-meta">
+                            <span class="result-type">논문</span>
+                            <span class="result-date">2024.01.20</span>
+                            <span class="result-author">박백신연구</span>
+                        </div>
+                        <div class="result-abstract">
+                            mRNA 기반 COVID-19 백신의 작용 메커니즘과 안전성에 대한 연구입니다. 
+                            면역 반응과 부작용에 대한 상세한 분석을 제공합니다.
+                        </div>
+                        <div class="result-keywords">
+                            <span class="keyword-tag">COVID-19</span>
+                            <span class="keyword-tag">mRNA</span>
+                            <span class="keyword-tag">백신</span>
+                            <span class="keyword-tag">면역반응</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 우측 섹션 -->
+        <div class="right-column">
+            <!-- 채팅 검색 창 -->
+            <div class="chat-search-container">
+                <div class="chat-search-header">
+                    <h3>채팅 검색</h3>
+                </div>
+                <div class="chat-search-input-wrapper">
+                    <input type="text" class="chat-search-input" id="chatSearchInput" placeholder="채팅 내용 검색..." />
+                    <button class="chat-search-btn" onclick="searchChat()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="m21 21-4.35-4.35"/>
+                        </svg>
+                </button>
+                </div>
+                <div class="chat-search-results" id="chatSearchResults">
+                    <!-- 2025년 9월 5일 -->
+                    <div class="date-group">
+                        <div class="date-label">2025년 9월 5일</div>
+                        <div class="query-list">
+                            <div class="query-card" onclick="selectQuery(1)">
+                                <div class="query-content">
+                                    <div class="query-title">COVID-19의 실험에서 유전자 편집 기술이 사용된 괄목할만한 성과가 있어?</div>
+                                </div>
+                                <div class="kebab-menu" onclick="event.stopPropagation(); toggleKebabMenu(this)">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="1"/>
+                                        <circle cx="12" cy="5" r="1"/>
+                                        <circle cx="12" cy="19" r="1"/>
+                                    </svg>
+                                    <div class="kebab-dropdown">
+                                        <div class="kebab-item" onclick="editQuery(1)">편집</div>
+                                        <div class="kebab-item delete" onclick="deleteQuery(1)">삭제</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="query-card" onclick="selectQuery(2)">
+                                <div class="query-content">
+                                    <div class="query-title">RNA 바이러스 치료 방법은?</div>
+                                </div>
+                                <div class="kebab-menu" onclick="event.stopPropagation(); toggleKebabMenu(this)">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="1"/>
+                                        <circle cx="12" cy="5" r="1"/>
+                                        <circle cx="12" cy="19" r="1"/>
+                                    </svg>
+                                    <div class="kebab-dropdown">
+                                        <div class="kebab-item" onclick="editQuery(2)">편집</div>
+                                        <div class="kebab-item delete" onclick="deleteQuery(2)">삭제</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 2025년 9월 4일 -->
+                    <div class="date-group">
+                        <div class="date-label">2025년 9월 4일</div>
+                        <div class="query-list">
+                            <div class="query-card" onclick="selectQuery(3)">
+                                <div class="query-content">
+                                    <div class="query-title">생명공학 분야의 최신 연구 동향은?</div>
+                                </div>
+                                <div class="kebab-menu" onclick="event.stopPropagation(); toggleKebabMenu(this)">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="1"/>
+                                        <circle cx="12" cy="5" r="1"/>
+                                        <circle cx="12" cy="19" r="1"/>
+                                    </svg>
+                                    <div class="kebab-dropdown">
+                                        <div class="kebab-item" onclick="editQuery(3)">편집</div>
+                                        <div class="kebab-item delete" onclick="deleteQuery(3)">삭제</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="query-card" onclick="selectQuery(4)">
+                                <div class="query-content">
+                                    <div class="query-title">바이오 센서 기술의 응용 분야는?</div>
+                                </div>
+                                <div class="kebab-menu" onclick="event.stopPropagation(); toggleKebabMenu(this)">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="1"/>
+                                        <circle cx="12" cy="5" r="1"/>
+                                        <circle cx="12" cy="19" r="1"/>
+                                    </svg>
+                                    <div class="kebab-dropdown">
+                                        <div class="kebab-item" onclick="editQuery(4)">편집</div>
+                                        <div class="kebab-item delete" onclick="deleteQuery(4)">삭제</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 2025년 9월 3일 -->
+                    <div class="date-group">
+                        <div class="date-label">2025년 9월 3일</div>
+                        <div class="query-list">
+                            <div class="query-card" onclick="selectQuery(5)">
+                                <div class="query-content">
+                                    <div class="query-title">세포 치료제 개발 현황은?</div>
+                                </div>
+                                <div class="kebab-menu" onclick="event.stopPropagation(); toggleKebabMenu(this)">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="1"/>
+                                        <circle cx="12" cy="5" r="1"/>
+                                        <circle cx="12" cy="19" r="1"/>
+                                    </svg>
+                                    <div class="kebab-dropdown">
+                                        <div class="kebab-item" onclick="editQuery(5)">편집</div>
+                                        <div class="kebab-item delete" onclick="deleteQuery(5)">삭제</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        
+    <!-- 키워드 검색 결과 페이지1 스크립트 (dummy.js 사용) -->
+    <script src="dummy.js"></script>
+    <script src="keyword-answer1.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioOne 통합검색</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="index-page">
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html"><img src="images/logo_w.png" alt="바이오원" class="logo-img"></a>
+            </div>
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="keyword-answer.html">검색답변</a></li>
+                    <li><a href="ai-answer.html">AI답변</a></li>
+                    <li><a href="mypage.html">마이페이지</a></li>
+                    <li><a href="https://www.bioone.re.kr/main" target="_blank">바이오원</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 메인 검색 영역 -->
+    <div class="search-container">
+        <div class="main-content">
+            <h1 class="main-subtitle">정보로 연결하고, 혁신으로 나아가는</h1>
+            <h2 class="main-title">바이오소재 정보 통합플랫폼</h2>
+            
+            <!-- 키워드 입력창 -->
+            <div class="keyword-input-container">
+                <div class="keyword-input-wrapper">
+                    <input type="text" id="keywordInput" class="keyword-input" placeholder="검색어를 입력해주세요.">
+                    <div class="search-icon" onclick="handleKeywordSearch()">
+                        <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </div>
+                    <div class="filter-icon">
+                        <svg width="24" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="22,3 2,3 10,12.46 10,19 14,21 14,12.46"></polygon>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 인기 검색어 -->
+            <div class="popular-keywords">
+                <h3 class="keywords-title">인기 검색어</h3>
+                <div class="triangle-buttons">
+                    <div class="triangle-left" id="prevBtn"></div>
+                    <div class="triangle-right" id="nextBtn"></div>
+                </div>
+                <div class="keywords-line"></div>
+                <div class="keywords-carousel">
+                    <div class="keywords-list" id="keywordsList">
+                        <span class="keyword-item"># Homo Sapiens</span>
+                        <span class="keyword-item"># breast cancer</span>
+                        <span class="keyword-item"># 폐암</span>
+                        <span class="keyword-item"># KAP240563</span>
+                        <span class="keyword-item"># cancer</span>
+                        <span class="keyword-item"># DNA</span>
+                        <span class="keyword-item"># RNA</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 안내 메시지 -->
+            <div class="info-message">
+                <p>* 현재 합성화합물, 배양세포, 천연물, 미생물, 모델동물, 종자, 축산, 해양생물, 뇌 클러스터와 연계되어 있습니다.</p>
+                <p>향후 지속적으로 연계클러스터를 확대할 예정입니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI 검색 고정 버튼 -->
+    <div class="fixed-ai-search-btn">
+        <a href="ai-index.html" class="ai-search-button">
+            <div class="ai-search-content">
+                <div class="ai-search-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="m21 21-4.35-4.35"/>
+                    </svg>
+                </div>
+                <div class="ai-search-text">AI검색</div>
+            </div>
+        </a>
+    </div>
+    
+    <!-- 메인 페이지 스크립트 -->
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+id,title,description,resource_number,korean_name,resource_type,cluster,image_url
+1,HEK-293 세포주,인간 신장 세포주로 널리 사용되는 세포주입니다. 유전자 발현 연구와 바이러스 생산에 적합합니다.,293[HEK-293],-,세포·세포주,배양세포,images/cell1.jpg
+2,HEK-293 세포주,인간 신장 세포주로 널리 사용되는 세포주입니다. 유전자 발현 연구와 바이러스 생산에 적합합니다.,293[HEK-293],-,세포·세포주,배양세포,images/cell2.jpg
+3,HEK-293 세포주,인간 신장 세포주로 널리 사용되는 세포주입니다. 유전자 발현 연구와 바이러스 생산에 적합합니다.,293[HEK-293],-,세포·세포주,배양세포,images/cell3.jpg
+4,HeLa 세포주,자궁경부암 세포주로 가장 널리 사용되는 세포주입니다. 암 연구의 표준 모델로 활용됩니다.,HeLa,HeLa 세포,세포·세포주,배양세포,images/cell4.jpg
+5,CHO 세포주,중국 햄스터 난소 세포주로 단백질 생산에 최적화된 세포주입니다.,CHO-K1,CHO 세포,세포·세포주,배양세포,images/cell5.jpg
