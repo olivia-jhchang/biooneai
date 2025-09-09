@@ -16,7 +16,7 @@
             </div>
                 <div class="nav-menu">
                     <ul>
-                    <li><a href="keyword-answer.html">검색답변</a></li>
+                    <li><a href="keyword-answer1.html">검색답변</a></li>
                     <li><a href="ai-answer.html">AI답변</a></li>
                     <li><a href="mypage.html">마이페이지</a></li>
                     <li><a href="https://www.bioone.re.kr/main" target="_blank">바이오원</a></li>
@@ -28,6 +28,21 @@
     <!-- 헤더: 배경 이미지 + 키워드 입력창 -->
     <header class="header-bg">
         <div class="header-bg__image"></div>
+        
+        <!-- 키워드 입력 섹션 -->
+        <div class="keyword-input-section">
+            <div class="keyword-input-container">
+                <div class="keyword-input-area">
+                    <input type="text" class="keyword-input" id="keywordInput" placeholder="검색어를 입력하세요..." />
+                    <button class="search-icon" onclick="handleKeywordSearch()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="m21 21-4.35-4.35"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
         
         <!-- AI 검색 고정 버튼 (헤더 우측) -->
         <div class="header-fixed-ai-search-btn">
@@ -45,7 +60,7 @@
         </div>
     </header>
     
-    <!-- 메인 탭 네비게이션 (키워드 검색 결과 / 관련자료 보기) -->
+    <!-- 메인 탭 네비게이션 (키워드 검색 결과 / 연관자료 보기) -->
     <div class="tab-navigation">
         <div class="tab-item active" id="relatedDataTab" onclick="switchMainTab('relatedData')">
             <div class="tab-icon">
@@ -62,7 +77,7 @@
                     <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
                 </svg>
             </div>
-            <div class="tab-text">연관 자료 보기</div>
+            <div class="tab-text">연관자료보기</div>
         </div>
     </div>
 
@@ -97,51 +112,31 @@
                     </div>
                 </div>
                 
-                <!-- 하단 버튼들 -->
-                <div class="filter-buttons">
-                    <div class="filter-button">
-                        <span>자원목록 검색 이동</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 18l6-6-6-6"/>
-                        </svg>
-                    </div>
-                    <div class="filter-button">
-                        <span>KOBIS 검색 이동</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 18l6-6-6-6"/>
-                        </svg>
-                    </div>
-                    <div class="filter-button">
-                        <span>구조식 검색 이동</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 18l6-6-6-6"/>
-                        </svg>
-                    </div>
-                </div>
+            </div>
+            
+            <!-- 하단 버튼들 -->
+            <div class="action-button">
+                <span>자원목록 검색 이동</span>
+            </div>
+            <div class="action-button">
+                <span>KOBIS 검색 이동</span>
+            </div>
+            <div class="action-button">
+                <span>구조식 검색 이동</span>
             </div>
         </div>
         
         <!-- 가운데 섹션 -->
         <div class="center-column">
-            <!-- 키워드 검색 결과 섹션 -->
-            <!-- 관련자료 섹션 -->
+            <!-- 통합검색결과 섹션-->
             <div class="related-data-section" id="relatedDataSection" style="display: block;">
                 <div class="search-result-header">
-                    <div class="search-result-info">
-                        <div class="search-keyword">
-                            <select class="keyword-select" id="keywordSelect">
-                                <option value="COVID-19">COVID-19</option>
-                                <option value="CRISPR-Cas13">CRISPR-Cas13</option>
-                                <option value="RNA">RNA</option>
-                                <option value="SARS-CoV-2">SARS-CoV-2</option>
-                                <option value="유전자편집">유전자편집</option>
-                                <option value="바이러스">바이러스</option>
-                                <option value="진단">진단</option>
-                                <option value="치료">치료</option>
-                            </select>
-                        </div>
+                    <div class="search-keyword-display">
+                        <span class="keyword-quote">"</span>
+                        <span class="keyword-text-display" id="keywordTextDisplay">COVID-19</span>
+                        <span class="keyword-quote">"</span>
                     </div>
-                    <span class="search-count-text">답변 관련 자료 검색결과</span>
+                    <span class="search-count-text">검색결과</span>
                     <span class="search-count-number" id="searchCountNumber">15,456</span>
                     <span class="search-count-text">건</span>
                 </div>
@@ -152,32 +147,10 @@
                     향후 지속적으로 연계 클러스터를 확대할 예정입니다.
                 </div>
                 
+                <!-- 통합검색결과 카테고리 탭 -->
                 <div class="category-tabs">
                     <div class="category-tab-group">
-                        <div class="category-tab active">
-                            <span>국내소재</span>
-                            <span>(8)</span>
-                        </div>
-                        <div class="category-tab inactive">
-                            <span>지식정보</span>
-                            <span>(0)</span>
-                        </div>
-                        <div class="category-tab inactive">
-                            <span>논문</span>
-                            <span>(15,344)</span>
-                        </div>
-                        <div class="category-tab inactive">
-                            <span>특허</span>
-                            <span>(110)</span>
-                        </div>
-                        <div class="category-tab inactive">
-                            <span>데이터</span>
-                            <span>(1)</span>
-                        </div>
-                        <div class="category-tab inactive">
-                            <span>통합플랫폼 콘텐츠</span>
-                            <span>(0)</span>
-                        </div>
+                        <!-- 카테고리 탭이 동적으로 로드됩니다 -->
                     </div>
                 </div>
                 
@@ -199,9 +172,10 @@
                 </div>
                 
                 <div class="material-list" id="materialList">
-                    <!-- 검색 결과가 동적으로 로드됩니다 -->
+                    <!-- 통합검색결과가 동적으로 로드됩니다 -->
                 </div>
             </div>
+            <!-- 연관 자료 보기 탭 -->
             <div class="keyword-search-results" id="keywordSearchResults" style="display: none;">
                 <div class="search-result-header">
                     <div class="search-result-info">
@@ -210,11 +184,12 @@
                         </div>
                     </div>
                     <span class="search-count-text">검색 결과</span>
-                    <span class="search-count-number" id="searchCountNumber">15,456</span>
+                    <span class="search-count-number" id="searchCountNumber">0</span>
                     <span class="search-count-text">건</span>
                 </div>
                 
-                <!-- 검색 결과 목록 -->
+                
+                <!-- 연관 자료 검색 결과 목록 -->
                 <div class="search-results-list">
                     <div class="search-result-item">
                         <div class="result-title">COVID-19 바이러스의 유전자 구조와 변이 분석</div>
@@ -398,7 +373,8 @@
             </div>
         </div>
         
-    <!-- 키워드 검색 결과 페이지 스크립트 -->
+    <!-- 키워드 검색 결과 페이지 스크립트 (dummy.js 사용) -->
+    <script src="dummy.js"></script>
     <script src="keyword-answer.js"></script>
 </body>
 
