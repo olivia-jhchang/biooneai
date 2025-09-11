@@ -483,11 +483,6 @@ body.main-page {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('images/bgindex.jpg');
-    background-size: cover;
-    background-position: center;
 }
 
 .keyword-input-container {
@@ -500,7 +495,7 @@ body.main-page {
     position: relative;
     display: inline-block;
     width: 100%;
-    max-width: 600px;
+    /*max-width: 600px;*/   
 }
 
 .keyword-input {
@@ -523,8 +518,8 @@ body.main-page {
 }
 
 .keyword-input:focus {
-    border-color: rgba(255, 255, 255, 0.6);
-    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
 }
 
 .search-icon {
@@ -854,56 +849,65 @@ body.ai-answer-page .header-bg__image {
     transform: translate(-50%, -50%);
     z-index: 2;
     width: 100%;
-    max-width: 600px;
-    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .keyword-input-container {
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .keyword-input-area {
     position: relative;
     width: 100%;
-    height: 56px;
-    background: transparent;
+    height: 72px;
+    background: #FFFFFF;
     border-radius: 50px;
     display: flex;
     align-items: center;
-    padding: 0 20px;
+    padding: 5px;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
 }
 
 .keyword-input {
-    flex: 1;
+    width: 100%;
     height: 100%;
     border: none;
     outline: none;
     background: transparent;
     font-family: 'Pretendard', sans-serif;
-    font-size: 16px;
-    color: #2B2C31;
-    padding: 0 20px 0 0;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.193;
+    color: #606060;
+    padding: 0 37px 0 37px;
+    margin-right: 140px;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
 }
 
 .keyword-input::placeholder {
-    color: #9CA3AF;
+    color: #606060;
 }
 
 .keyword-input-section .search-icon {
-    position: static;
-    transform: none;
-    width: 40px;
-    height: 40px;
+    position: absolute;
+    right: 75px;
+    width: 66px;
+    height: 62px;
     background: #019BBF;
-    border: none;
-    border-radius: 50%;
-    color: #FFFFFF;
-    cursor: pointer;
+    border-radius: 50px 8px 8px 50px;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #FFFFFF;
+    cursor: pointer;
     transition: all 0.3s ease;
-    flex-shrink: 0;
 }
 
 .keyword-input-section .search-icon:hover {
