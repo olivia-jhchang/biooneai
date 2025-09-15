@@ -292,6 +292,30 @@ body.main-page {
     margin-bottom: 0;
 }
 
+/* AI 인덱스 페이지 안내 메시지 스타일 */
+.main-page .info-message {
+    background: rgba(51, 51, 51, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 16px 24px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.main-page .info-message p {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.375;
+    letter-spacing: -0.01em;
+    color: #FFFFFF;
+    margin: 0 0 8px 0;
+}
+
+.main-page .info-message p:last-child {
+    margin-bottom: 0;
+}
+
 /* 검색 필터 스타일 - 이미지 참고 */
 .search-filter-container {
     background: #fff;
